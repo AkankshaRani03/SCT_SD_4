@@ -76,14 +76,6 @@ The project uses:
 
 The project includes several UI screenshots in the assests folder.
 
-Example screenshots:
-
-- ![Dashboard Overview](assests/Screenshot%202026-06-27%20184212.png)
-- ![Search and Results View](assests/Screenshot%202026-06-27%20185113.png)
-- ![Product Table](assests/Screenshot%202026-06-27%20185237.png)
-- ![Analytics and Export Options](assests/Screenshot%202026-06-27%20185247.png)
-
-Additional screenshots are also available in the assests folder for reference.
 
 ## Notes
 
