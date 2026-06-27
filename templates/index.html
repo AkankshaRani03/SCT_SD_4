@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>
+        ProductVision AI
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+
+    <script
+        defer
+        src="{{ url_for('static', filename='script.js') }}">
+    </script>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- ================= HEADER ================= -->
+
+    <header>
+
+        <h1>
+            🛒 ProductVision AI
+        </h1>
+
+        <p>
+
+            Intelligent E-Commerce Product Analytics &
+            Web Scraping Platform
+
+        </p>
+
+        <button
+            id="themeToggle">
+
+            🌙
+
+        </button>
+
+    </header>
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <div class="dashboard">
+
+       <!-- ================= SEARCH ================= -->
+
+<section class="card search-card">
+
+    <h2>
+        🔍 Data Source
+    </h2>
+
+    <form action="/search" method="POST">
+
+    <label class="select-label">
+        🌐 Select Data Source
+    </label>
+
+    <select
+        id="website"
+        name="website"
+        class="custom-select">
+
+        <option value="books">
+            📚 Books To Scrape
+        </option>
+
+        <option value="quotes">
+            💬 Quotes To Scrape
+        </option>
+
+        <option value="dummy">
+            🛒 DummyJSON Products
+        </option>
+
+    </select>
+
+    <button type="submit">
+        🚀 Fetch Data
+    </button>
+
+</form>
+
+</section>
+
+        <!-- Statistics -->
+
+        <section class="card stats-card">
+
+            <h2>
+
+                📊 Analytics
+
+            </h2>
+
+            <div class="stats-grid">
+
+                <div class="stat-box">
+
+                    <span>
+
+                        Products
+
+                    </span>
+
+                    <h3>
+
+                        {{ stats.count or 0 }}
+
+                    </h3>
+
+                </div>
+
+                <div class="stat-box">
+
+                    <span>
+
+                        Average Price
+
+                    </span>
+
+                    <h3>
+
+                        {{ stats.average or 0 }}
+
+                    </h3>
+
+                </div>
+
+                <div class="stat-box">
+
+                    <span>
+
+                        Highest
+
+                    </span>
+
+                    <h3>
+
+                        {{ stats.highest or 0 }}
+
+                    </h3>
+
+                </div>
+
+                <div class="stat-box">
+
+                    <span>
+
+                        Lowest
+
+                    </span>
+
+                    <h3>
+
+                        {{ stats.lowest or 0 }}
+
+                    </h3>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Export -->
+
+        <section class="card export-card">
+
+            <h2>
+
+                📥 Export
+
+            </h2>
+
+            <a
+                href="/download/csv">
+
+                <button>
+
+                    CSV Export
+
+                </button>
+
+            </a>
+
+            <a
+                href="/download/excel">
+
+                <button>
+
+                    Excel Export
+
+                </button>
+
+            </a>
+
+        </section>
+
+        <!-- Products -->
+
+        <section class="card products-card">
+
+            <h2>
+
+                🛍 Products
+
+            </h2>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Image</th>
+
+                            <th>Name</th>
+
+                            <th>Price</th>
+
+                            <th>Rating</th>
+
+                            <th>Availability</th>
+
+                            <th>View</th>
+
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        {% for product in products %}
+
+                        <tr>
+
+                            <td>
+
+                                <img
+
+                                    src="{{ product.image }}"
+
+                                    width="70">
+
+                            </td>
+
+                            <td>
+
+                                {{ product.name }}
+
+                            </td>
+
+                            <td>
+
+                                {{ product.price }}
+
+                            </td>
+
+                            <td>
+
+                                ⭐ {{ product.rating }}
+
+                            </td>
+
+                            <td>
+
+                                {{ product.availability }}
+
+                            </td>
+
+                            <td>
+
+                                <a
+
+                                    target="_blank"
+
+                                    href="{{ product.link }}">
+
+                                    Open
+
+                                </a>
+
+                            </td>
+
+                        </tr>
+
+                        {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
